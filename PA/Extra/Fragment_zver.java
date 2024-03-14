@@ -1,4 +1,4 @@
-package PA;
+package PA.Extra;
 // Author: Ziky
 // Assignment: DNAfragments.java
 // Part: #4
