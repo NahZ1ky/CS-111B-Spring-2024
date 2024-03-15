@@ -1,4 +1,3 @@
-package PA.Extra;
 // Author: Ziky
 // Assignment: DNAfragments.java
 // Part: #4
@@ -7,7 +6,7 @@ package PA.Extra;
 
 import java.util.*;
 
-public class Fragment_zver {
+public class FragmentZver {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
