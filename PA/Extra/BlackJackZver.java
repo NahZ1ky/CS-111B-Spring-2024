@@ -1,8 +1,7 @@
-package PA.Extra;
 import java.util.Random;
 import java.util.Scanner;
 
-public class BlackJack_zver {
+public class BlackJackZver {
     public static void main (String[] args) {
         Scanner scnr = new Scanner(System.in);
         Random rdm = new Random();
