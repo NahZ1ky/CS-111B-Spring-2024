@@ -12,28 +12,37 @@ public class TicTacToeZver{
         System.out.print("Board size: ");
         int size = scanner.nextInt();
         char[][] board = new char[size][size];
+        for (int row = 0; row < board.length; row++){
+            for (int column = 0; column < board[0].length; column++){
+                board[row][column] = '-';
+            }
+        }
         return board;
     }
 
     public static void display(char[][] board){
         for (int row = 0; row < board.length; row++){
-            System.out.println("---------");
+            System.out.println("-----------");
             for (int column = 0; column < board[0].length; column++){
-                System.out.print(" " + board[row][column]);
+                System.out.print("  " + board[row][column]);
             }
+            System.out.println();
         }
-        System.out.println("---------");
+        System.out.println("-----------");
         System.out.println();
     }
 
     public static boolean winByRow(char currentPlayer, char[][] board){
         for(int row = 0; row < board.length; row++){
+            boolean win = true;
             for(int column = 0; column < board[0].length; column++){
                 if (board[row][column] != currentPlayer){
+                    win = false;
                     break;
-                } else if (board[row][board[0].length] == currentPlayer){
-                    return true;
                 }
+            }
+            if (win){
+                return true;
             }
         }
         return false;
@@ -41,12 +50,15 @@ public class TicTacToeZver{
 
     public static boolean winByColumn(char currentPlayer, char[][] board){
         for(int column = 0; column < board[0].length; column++){
+            boolean win = true;
             for(int row = 0; row < board.length; row++){
                 if (board[row][column] != currentPlayer){
+                    win = false;
                     break;
-                } else if (board[board.length][column] == currentPlayer){
-                    return true;
                 }
+            }
+            if (win){
+                return true;
             }
         }
         return false;
@@ -54,25 +66,31 @@ public class TicTacToeZver{
 
     public static boolean winByDiagonal(char currentPlayer, char[][] board){
         for(int row = 0; row < board.length; row++){
+            boolean win = true;
             for(int column = 0; column < board[0].length; column++){
                 if (board[row][column] != currentPlayer){
+                    win = false;
                     break;
-                } else if (board[board.length][board[0].length] == currentPlayer){
-                    return true;
                 }
+            }
+            if (win){
+                return true;
             }
         }
         return false;
     }
 
     public static boolean winByAntiDiagonal(char currentPlayer, char[][] board){
-        for(int row = (board.length - 1); row < board.length; row--){
+        for(int row = (board.length - 1); row > 0; row--){
+            boolean win = true;
             for(int column = 0; column < board[0].length; column++){
                 if (board[row][column] != currentPlayer){
+                    win = false;
                     break;
-                } else if (board[0][board[0].length] == currentPlayer){
-                    return true;
                 }
+            }
+            if (win){
+                return true;
             }
         }
         return false;
@@ -100,12 +118,12 @@ public class TicTacToeZver{
     }
 
     public static boolean isTie(char currentPlayer, char[][] board){
-        if (!haveDash(board) ||
+        if (haveDash(board) ||
             !isWinning(currentPlayer, board) ||
             !isWinning(currentPlayer, board)){
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public static boolean takeTurn(char currentPlayer, char[][] board){
@@ -139,6 +157,7 @@ public class TicTacToeZver{
 
         // display board
         System.out.println("Time to play some Tic Tac Toe!");
+        display(mainBoard);
         while (!mainGameOver){
             mainGameOver = takeTurn(mainCurrentPlayer, mainBoard);
             display(mainBoard);
