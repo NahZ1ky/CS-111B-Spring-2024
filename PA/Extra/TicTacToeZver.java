@@ -42,7 +42,7 @@ public class TicTacToeZver{
                 }
             }
             if (win){
-                return true;
+                return win;
             }
         }
         return false;
@@ -58,42 +58,28 @@ public class TicTacToeZver{
                 }
             }
             if (win){
-                return true;
+                return win;
             }
         }
         return false;
     }
 
     public static boolean winByDiagonal(char currentPlayer, char[][] board){
-        for(int row = 0; row < board.length; row++){
-            boolean win = true;
-            for(int column = 0; column < board[0].length; column++){
-                if (board[row][column] != currentPlayer){
-                    win = false;
-                    break;
-                }
-            }
-            if (win){
-                return true;
+        for(int i = 0; i < board.length; i++){
+            if (board[i][i] != currentPlayer){
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public static boolean winByAntiDiagonal(char currentPlayer, char[][] board){
-        for(int row = (board.length - 1); row > 0; row--){
-            boolean win = true;
-            for(int column = 0; column < board[0].length; column++){
-                if (board[row][column] != currentPlayer){
-                    win = false;
-                    break;
-                }
-            }
-            if (win){
-                return true;
+        for(int i = 0; i < board.length; i++){
+            if (board[i][board.length - 1 -i] != currentPlayer){
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public static boolean isWinning(char currentPlayer, char[][] board){
