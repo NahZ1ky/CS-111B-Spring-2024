@@ -1,16 +1,16 @@
 // Author: Ziky Zhang
 // Last Modification: Mar.14th
 // Course: CS111B
-// File Name: ticTacToe_zver.java
+// File Name: TicTacToeZver.java
 
 import java.util.*;
 
 public class TicTacToeZver{
     static Scanner scanner = new Scanner(System.in);
 
-    public static char[][] initboard(int size) {
+    public static char[][] initboard() {
         System.out.print("Board size: ");
-        size = scanner.nextInt();
+        int size = scanner.nextInt();
         char[][] board = new char[size][size];
         return board;
     }
@@ -26,12 +26,12 @@ public class TicTacToeZver{
         System.out.println();
     }
 
-    public static boolean winByRow(char move, char[][] board){
+    public static boolean winByRow(char currentPlayer, char[][] board){
         for(int row = 0; row < board.length; row++){
             for(int column = 0; column < board[0].length; column++){
-                if (board[row][column] != move){
+                if (board[row][column] != currentPlayer){
                     break;
-                } else if (board[row][board[0].length] == move){
+                } else if (board[row][board[0].length] == currentPlayer){
                     return true;
                 }
             }
@@ -39,12 +39,12 @@ public class TicTacToeZver{
         return false;
     }
 
-    public static boolean winByColumn(char move, char[][] board){
+    public static boolean winByColumn(char currentPlayer, char[][] board){
         for(int column = 0; column < board[0].length; column++){
             for(int row = 0; row < board.length; row++){
-                if (board[row][column] != move){
+                if (board[row][column] != currentPlayer){
                     break;
-                } else if (board[board.length][column] == move){
+                } else if (board[board.length][column] == currentPlayer){
                     return true;
                 }
             }
@@ -52,12 +52,12 @@ public class TicTacToeZver{
         return false;
     }
 
-    public static boolean winByDiagonal(char move, char[][] board){
+    public static boolean winByDiagonal(char currentPlayer, char[][] board){
         for(int row = 0; row < board.length; row++){
             for(int column = 0; column < board[0].length; column++){
-                if (board[row][column] != move){
+                if (board[row][column] != currentPlayer){
                     break;
-                } else if (board[board.length][board[0].length] == move){
+                } else if (board[board.length][board[0].length] == currentPlayer){
                     return true;
                 }
             }
@@ -65,12 +65,12 @@ public class TicTacToeZver{
         return false;
     }
 
-    public static boolean winByAntiDiagonal(char move, char[][] board){
+    public static boolean winByAntiDiagonal(char currentPlayer, char[][] board){
         for(int row = (board.length - 1); row < board.length; row--){
             for(int column = 0; column < board[0].length; column++){
-                if (board[row][column] != move){
+                if (board[row][column] != currentPlayer){
                     break;
-                } else if (board[0][board[0].length] == move){
+                } else if (board[0][board[0].length] == currentPlayer){
                     return true;
                 }
             }
@@ -78,11 +78,11 @@ public class TicTacToeZver{
         return false;
     }
 
-    public static boolean isWinning(char move, char[][] board){
-        if (winByRow(move, board) ||
-            winByColumn(move, board) ||
-            winByDiagonal(move, board) ||
-            winByAntiDiagonal(move, board)){
+    public static boolean isWinning(char currentPlayer, char[][] board){
+        if (winByRow(currentPlayer, board) ||
+            winByColumn(currentPlayer, board) ||
+            winByDiagonal(currentPlayer, board) ||
+            winByAntiDiagonal(currentPlayer, board)){
             return true;
         }
         return false;
@@ -99,21 +99,56 @@ public class TicTacToeZver{
         return false;
     }
 
-    public static boolean isTie(char move, char[][] board){
+    public static boolean isTie(char currentPlayer, char[][] board){
         if (!haveDash(board) ||
-            !isWinning(move, board) ||
-            !isWinning(move, board)){
+            !isWinning(currentPlayer, board) ||
+            !isWinning(currentPlayer, board)){
             return true;
         }
         return false;
     }
 
+    public static boolean takeTurn(char currentPlayer, char[][] board){
+        int row = 0;
+        int column = 0;
+        boolean isGameOver = false;
 
+        do { // check validity of the coordinate player choose
+            System.out.println(currentPlayer + ", this is your turn. Enter row col (0 0 is top left)");
+            System.out.println("Seeing this message again means you have chosen a invalid coordinate.");
+            row = scanner.nextInt();
+            column = scanner.nextInt();
+        } while (board[row][column] != '-');
 
+        board[row][column] = currentPlayer;
 
-
+        if (isWinning(currentPlayer, board)){ // check game status
+            System.out.println("You have won! Congrats!");
+            isGameOver = true;
+        } else if (isTie(currentPlayer, board)){
+            System.out.println("You have reach a tie situation, the game is over");
+            isGameOver = true;
+        }
+        return isGameOver;
+    }
 
     public static void main(String[] args) {
-        System.out.println("Hello, world");
+        char mainCurrentPlayer = 'X';
+        char[][] mainBoard = initboard();
+        boolean mainGameOver = false;
+
+        // display board
+        System.out.println("Time to play some Tic Tac Toe!");
+        while (!mainGameOver){
+            mainGameOver = takeTurn(mainCurrentPlayer, mainBoard);
+            display(mainBoard);
+
+            // switch player
+            if (mainCurrentPlayer == 'X'){
+                mainCurrentPlayer = 'O';
+            } else {
+                mainCurrentPlayer = 'X';
+            }
+        }
     }
 }
