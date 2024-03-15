@@ -117,12 +117,21 @@ public class TicTacToeZver{
         int column = 0;
         boolean isGameOver = false;
 
-        do { // check validity of the coordinate player choose
-            System.out.println(currentPlayer + ", this is your turn. Enter row col (0 0 is top left)");
-            System.out.println("Seeing this message again means you have chosen a invalid coordinate.");
+        System.out.println(currentPlayer + ", this is your turn. Enter row col (0 0 is top left)");
+        row = scanner.nextInt();
+        column = scanner.nextInt();
+        while (board[row][column] != '-'){ // check validity of the coordinate player choose
+            System.out.println("The block has been chosen, choose another one.");
             row = scanner.nextInt();
             column = scanner.nextInt();
-        } while (board[row][column] != '-');
+        }
+        /*  this can't seems to fix index out of bound problem
+        while (row < 0 || row > 2 || column < 0 || column > 2){
+            System.out.println("Index out of bounds, choose number between 0 and 2.");
+            row = scanner.nextInt();
+            column = scanner.nextInt();
+        }
+        */
 
         board[row][column] = currentPlayer;
 
