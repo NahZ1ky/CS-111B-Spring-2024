@@ -8,7 +8,7 @@ import java.util.*;
 public class TicTacToeZver{
     static Scanner scanner = new Scanner(System.in);
 
-    public static char[][] initboard() {
+    public static char[][] initBoard() {
         System.out.print("Board size: ");
         int size = scanner.nextInt();
         char[][] board = new char[size][size];
@@ -105,8 +105,7 @@ public class TicTacToeZver{
 
     public static boolean isTie(char currentPlayer, char[][] board){
         if (haveDash(board) ||
-            !isWinning(currentPlayer, board) ||
-            !isWinning(currentPlayer, board)){
+            isWinning(currentPlayer, board)){
             return false;
         }
         return true;
@@ -147,7 +146,7 @@ public class TicTacToeZver{
 
     public static void main(String[] args) {
         char mainCurrentPlayer = 'X';
-        char[][] mainBoard = initboard();
+        char[][] mainBoard = initBoard();
         boolean mainGameOver = false;
 
         // display board
