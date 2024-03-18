@@ -1,4 +1,3 @@
-package PA;
 // Author: Xirong (Ziky) Zhang & Shawn Luna & Azeal Riday
 // Date of Last Modification: 03/06/2024
 // Course: CS-111B
