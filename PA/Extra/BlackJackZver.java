@@ -1,5 +1,6 @@
-import java.util.Random;
-import java.util.Scanner;
+// unfinished, don't use this
+
+import java.util.*;
 
 public class BlackJackZver {
     public static void main (String[] args) {
