@@ -1,30 +1,30 @@
 import java.util.Scanner;
 
-public class TicTacToeStub
+public class TicTacToeShawnVer
 {
   ///////  STEP 1: initialize board ////////
-  // board will be size x size array 
+  // board will be size x size array
   // use a nested for-loop to initialize/assign
   // each element to a dash '-'
-  
-  
-  public static char[][] initBoard(int size) {
-    char[][] board = new char[size][size];
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            board[i][j] = '-';
+
+
+    public static char[][] initBoard(int size) {
+        char[][] board = new char[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                board[i][j] = '-';
+            }
         }
+        return board;
     }
-    return board;
-}
 
   ///////  STEP 2: display board ////////
   // Display the current status of the board on the
   // screen using nested for-loop to display each element
   // and using underscores (_) to separate rows
   //PUT YOUR CODE FOR display Here
- 
-public static void display(char[][] board) {
+
+    public static void display(char[][] board) {
         System.out.println("\n_______");
         for (int row = 0; row < board.length; row++) {
             for (int column = 0; column < board[0].length; column++) {
@@ -37,11 +37,11 @@ public static void display(char[][] board) {
     }
 
   ///////  STEP 3: check for win ////////
-  // check 3 rows, 3 coluns, 2 diagonals
+  // check 3 rows, 3 columns, 2 diagonals
   // return true if we have a winner
-  
-  
-  public static boolean winByRow(char currentPlayer, char[][] board){
+
+
+    public static boolean winByRow(char currentPlayer, char[][] board){
         for(int row = 0; row < board.length; row++){
             boolean win = true;
             for(int column = 0; column < board[0].length; column++){
@@ -55,7 +55,7 @@ public static void display(char[][] board) {
         }
         return false;
     }
-    
+
     public static boolean winByColumn(char currentPlayer, char[][] board){
         for(int column = 0; column < board[0].length; column++){
             boolean win = true;
@@ -71,7 +71,7 @@ public static void display(char[][] board) {
         return false;
     }
 
-public static boolean winByDiagonal(char currentPlayer, char[][] board){
+    public static boolean winByDiagonal(char currentPlayer, char[][] board){
         for(int i = 0; i < board.length; i++){
             if (board[i][i] != currentPlayer){
                 return false;
@@ -88,23 +88,22 @@ public static boolean winByDiagonal(char currentPlayer, char[][] board){
         }
         return true;
     }
-    
+
  ///////  STEP 4: check for tie ////////
  // check each element in board
  // if any element is not a dash (-) tie is false
- 
-  public static boolean isTie(char[][] playerTie) {
-    for (int i = 0; i < playerTie.length; i++) {
-        for (int j = 0; j < playerTie[i].length; j++) {
-            if (playerTie[i][j] == '-') {
-                return false; 
+
+    public static boolean isTie(char[][] playerTie) {
+        for (int i = 0; i < playerTie.length; i++) {
+            for (int j = 0; j < playerTie[i].length; j++) {
+                if (playerTie[i][j] == '-') {
+                    return false;
+                }
             }
         }
+        return true;
     }
-    return true; 
-}
-
-public static boolean isWinner(char move, char [][] board)
+    public static boolean isWinner(char move, char [][] board)
     {
         boolean win = false;
         if (!win){ // for row
@@ -146,7 +145,7 @@ public static boolean isWinner(char move, char [][] board)
         }
         return false;
     }
-    
+
   ///////  takeTurn  ////////
   // Allow the curPlayer to take a turn.
   // Ask user for row col to play
@@ -155,60 +154,60 @@ public static boolean isWinner(char move, char [][] board)
   // When a valid move is entered,
   // put it on the board.
   //
-  
-  public static boolean takeTurn(char thePlayer, char[][] board) {
-    int row = 0;
-    int column = 0;
-    boolean isGameOver = false;
 
-    Scanner scan = new Scanner(System.in);
+    public static boolean takeTurn(char thePlayer, char[][] board) {
+        int row = 0;
+        int column = 0;
+        boolean isGameOver = false;
 
-    System.out.println(thePlayer + ", this is your turn. Enter row col (0 0 is top left)");
-    row = scan.nextInt();
-    column = scan.nextInt();
+        Scanner scan = new Scanner(System.in);
 
-    while (row < 0 || row >= board.length || column < 0 || column >= board[row].length || board[row][column] != '-') {
-        System.out.println("Invalid entry: Row " + row + " at Column " + column +  " already contains: " + board[row][column]);
+        System.out.println(thePlayer + ", this is your turn. Enter row col (0 0 is top left)");
         row = scan.nextInt();
         column = scan.nextInt();
-    }
 
-    board[row][column] = thePlayer;
+        while (row < 0 || row >= board.length || column < 0 || column >= board[row].length || board[row][column] != '-') {
+            System.out.println("Invalid entry: Row " + row + " at Column " + column +  " already contains: " + board[row][column]);
+            row = scan.nextInt();
+            column = scan.nextInt();
+        }
 
-    if (isWinner(thePlayer, board)) {
-        System.out.println(thePlayer + " You won!");
-        isGameOver = true;
-    } else if (isTie(board)) {
-        System.out.println("It's a tie!!");
-        isGameOver = true;
-    }
+        board[row][column] = thePlayer;
 
-    return isGameOver;
+        if (isWinner(thePlayer, board)) {
+            System.out.println(thePlayer + " You won!");
+            isGameOver = true;
+        } else if (isTie(board)) {
+            System.out.println("It's a tie!!");
+            isGameOver = true;
+        }
+
+        return isGameOver;
 }
 
 
    ///////  play the game ////////
    //  while game not over
-   //  user takes a turn 
+   //  user takes a turn
    //      checks for win or tie
    //  alternate play between player X and O
-   
- public static void main(String[] args) {
-    char curPlayer = 'X';
-    char[][] board;       
-    boolean gameOver = false;
 
-    board = initBoard(3);
-    System.out.println("*** LET'S PLAY TIC TAC TOE ***");
-    
-    display(board);
+    public static void main(String[] args) {
+        char curPlayer = 'X';
+        char[][] board;
+        boolean gameOver = false;
 
-    while (!gameOver) {
-        gameOver = takeTurn(curPlayer, board);
+        board = initBoard(3);
+        System.out.println("*** LET'S PLAY TIC TAC TOE ***");
+
         display(board);
-        curPlayer = (curPlayer == 'X') ? 'O' : 'X';
+
+        while (!gameOver) {
+            gameOver = takeTurn(curPlayer, board);
+            display(board);
+            curPlayer = (curPlayer == 'X') ? 'O' : 'X';
+        }
     }
-}
 
 
 }  //end class
