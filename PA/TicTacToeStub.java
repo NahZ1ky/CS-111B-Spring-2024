@@ -1,4 +1,3 @@
-package PA;
 /*
 ALGORITHM:
 I. initialize ALGORITHM:
@@ -8,8 +7,9 @@ III. While no win or tie
      B. change player
 */
 
-// Author(s): Constance Conner and Ziky Zhang and 
-// Date of Last Modification: 03/8/2024
+
+// Author(s): Constance Conner and YOUR NAME(S)
+// Date of Last Modification: 03/1/2024
 // Course: CS111B
 // Instructor: C. Conner
 // File Name: TicTacToeStub.java
@@ -19,92 +19,107 @@ III. While no win or tie
 import java.util.Scanner;
 
 public class TicTacToeStub{
-    // Board size initialize
+    // board initialization state
     public static char[][] initBoard(int size)
     {
-        Scanner scnr = new Scanner(System.in);
-        size = scnr.nextInt();
         char[][] board = new char[size][size];
-        return null;
+        for (int row = 0; row < board.length; row++){
+            for (int column = 0; column < board[0].length; column++){
+                board[row][column] = '-';
+            }
+        }
+        return board;
     }
 
-    // Display board
-    public static String display(char[][] board[][]){
-        System.out.println("\n--------");
-        for(int row=0; row < board.length; row++)
-        {
-        for(int col=0; col < board[row].length; col++)
-            System.out.print(board[row][col] + "  ");
-        System.out.println();
-        System.out.println("--------");
+    public static void display(char[][] board) {
+        System.out.println("\n_______");
+        for (int row = 0; row < board.length; row++) {
+            for (int column = 0; column < board[0].length; column++) {
+                System.out.print(board[row][column] + "  ");
+            }
+            System.out.println();
+            System.out.println("_______");
         }
         System.out.println();
-        return null;
     }
 
-    ///////  STEP 3: check for win ////////
-    public static boolean isWinner(char move, char [][] board)
-    {
-        boolean win = false;
-        if (!win){ // checking row
-            for (int i = 0; i < board.length; i++){
-                char initial = board[i][0];
-                for (int j = 1; j < board.length; j++){
-                    if (initial != board[i][j]){
-                        break;
-                    } else if ((initial == board[i][2]) && (initial == move)){
-                        win = true;
-                        return true;
-                    }
+    // check for win
+    public static boolean winByRow(char currentPlayer, char[][] board){
+        for(int row = 0; row < board.length; row++){
+            boolean win = true;
+            for(int column = 0; column < board[0].length; column++){
+                if (board[row][column] != currentPlayer){
+                    win = false;
                 }
             }
-        } if (!win){ // checking column
-            for (int j = 0; j < board.length; j++){
-                char initial = board[0][j];
-                for (int i = 1; i < board.length; i++){
-                    if (initial != board[i][j]){
-                        break;
-                    } else if ((initial == board[2][j]) && (initial == move)){
-                        win = true;
-                        return true;
-                    }
-                }
-            }
-        } if (!win){ // checking diagonal > \
-            for (int i = 0; i < 3; i++){
-                char initial = board[0][0];
-                if (initial != board[1][1]){
-                    break;
-                } else if ((initial == board[2][2]) && (initial == move)){
-                    win = true;
-                    return true;
-                }
-            }
-        } if (!win){ // checking diagonal > /
-            if ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0]) && board[0][2] == move){
-                win = true;
-                return true;
+            if (win){
+                return win;
             }
         }
         return false;
     }
 
-    ///////  STEP 4: check for tie ////////
-    public static boolean isTie(char [][] tieBoard)
-    {
-        boolean allDash = true;
-        for (int i = 0; i < tieBoard.length; i++){
-            for (int j = 0; j < tieBoard.length; j++){
-                if (tieBoard[i][j] == '-'){
-                    allDash = false;
+    public static boolean winByColumn(char currentPlayer, char[][] board){
+        for(int column = 0; column < board[0].length; column++){
+            boolean win = true;
+            for(int row = 0; row < board.length; row++){
+                if (board[row][column] != currentPlayer){
+                    win = false;
+                }
+            }
+            if (win){
+                return win;
+            }
+        }
+        return false;
+    }
+
+    public static boolean winByDiagonal(char currentPlayer, char[][] board){
+        for(int i = 0; i < board.length; i++){
+            if (board[i][i] != currentPlayer){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean winByAntiDiagonal(char currentPlayer, char[][] board){
+        for(int i = 0; i < board.length; i++){
+            if (board[i][board.length - 1 -i] != currentPlayer){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isWinning(char currentPlayer, char[][] board){
+        if (winByRow(currentPlayer, board) ||
+            winByColumn(currentPlayer, board) ||
+            winByDiagonal(currentPlayer, board) ||
+            winByAntiDiagonal(currentPlayer, board)){
+            return true;
+        }
+        return false;
+    }
+
+    // check for tie
+    public static boolean haveDash(char[][] board) {
+        for (int row = 0; row < board.length; row++){
+            for (int column = 0; column < board[0].length; column++){
+                if (board[row][column] == '-'){
+                    return true;
                 }
             }
         }
-        if (!allDash){
+        return false;
+    }
+
+    public static boolean isTie(char currentPlayer, char[][] board){
+        if (haveDash(board) ||
+            isWinning(currentPlayer, board)){
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     ///////  takeTurn  ////////
@@ -117,7 +132,7 @@ public class TicTacToeStub{
     //
     // STEP 5: Check if game is over (YOU WILL WRITE THIS NESTED if/else) below
 
-    public static boolean takeTurn(char thePlayer, char [][] board)
+    public static boolean takeTurn(char thePlayer, char[][] board)
     {
         int row = 0;
         int col = 0;
@@ -128,7 +143,7 @@ public class TicTacToeStub{
 
 
         System.out.println(thePlayer +  " your turn. Enter row col (0 0 is top left): ");
-    // System.out.print("Example 0 0 is top left: ");
+        // System.out.print("Example 0 0 is top left: ");
         row = scan.nextInt();
         col = scan.nextInt();
 
@@ -157,18 +172,22 @@ public class TicTacToeStub{
         //          1. display "It's a Tie!"
         //          2. set isGameOver to true
         //         else
-        //           1'. set isGameover to false
-
+        //           1'. set isGameOver to false
+        if (isWinning(thePlayer, board)){ // check game status
+            System.out.println("You Won!!");
+            isGameOver = true;
+        } else if (isTie(thePlayer, board)){
+            System.out.println("It's a Tie!");
+            isGameOver = true;
+        }
         return isGameOver;
-
-
     }
 
-    ///////  play the game ////////
-    //  while game not over
-    //  user takes a turn
-    //      checks for win or tie
-    //  alternate play between player X and O
+   ///////  play the game ////////
+   //  while game not over
+   //  user takes a turn
+   //      checks for win or tie
+   //  alternate play between player X and O
     public static void main(String [] args)
     {
         char curPlayer = 'X'; //first player is X
@@ -179,8 +198,9 @@ public class TicTacToeStub{
         board = initBoard(3);
         System.out.println("***LET'S PLAY TIC TAC TOE***");
 
-        /////// beginning of display board ////////
+        /////// beginning of  display board ////////
         // STEP 2: PUT CODE TO DISPLAY INTO A METHOD named display SEE STEP 2 ABOVE
+        display(board);
         ///////  end of display board ////////
         ///CALL display METHOD HERE passing board as argument
 
@@ -194,15 +214,7 @@ public class TicTacToeStub{
         /////// beginning of  display board ////////
         // STEP 2: REPLACE THIS CODE WIth A CALL TO display METHOD
         //passing board as argument
-        System.out.println("\n--------");
-        for(int row=0; row < board.length; row++)
-        {
-            for(int col=0; col < board[row].length; col++)
-            System.out.print(board[row][col] + "  ");
-            System.out.println();
-            System.out.println("--------");
-        }
-        System.out.println();
+        display(board);
         ///////  end of display board ///////
         //CALL THE display METHOD HERE
 
