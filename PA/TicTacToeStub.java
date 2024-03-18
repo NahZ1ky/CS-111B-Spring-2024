@@ -8,8 +8,8 @@ III. While no win or tie
 */
 
 
-// Author(s): Constance Conner and YOUR NAME(S)
-// Date of Last Modification: 03/1/2024
+// Author(s): Constance Conner, Ziky Zhang, Shawn Luna, Azeal Riday
+// Date of Last Modification: 03/17/2024
 // Course: CS111B
 // Instructor: C. Conner
 // File Name: TicTacToeStub.java
