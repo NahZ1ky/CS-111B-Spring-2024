@@ -9,7 +9,7 @@ III. While no win or tie
 
 
 // Author(s): Constance Conner, Ziky Zhang, Shawn Luna, Azeal Riday
-// Date of Last Modification: 03/17/2024
+// Date of Last Modification: 03/19/2024
 // Course: CS111B
 // Instructor: C. Conner
 // File Name: TicTacToeStub.java
@@ -44,79 +44,71 @@ public class TicTacToeStub{
     }
 
     // check for win
-    public static boolean winByRow(char currentPlayer, char[][] board){
-        for(int row = 0; row < board.length; row++){
-            boolean win = true;
-            for(int column = 0; column < board[0].length; column++){
+    public static boolean isWinning (char currentPlayer, char[][] board) {
+        boolean winByRow, winByColumn, winByDiagonal, winByAntiDiagonal;
+
+        // check row
+        for (int row = 0; row < board.length; row++){
+            winByRow = true;
+            for (int column = 0; column < board[0].length; column++){
                 if (board[row][column] != currentPlayer){
-                    win = false;
+                    winByRow = false;
                 }
             }
-            if (win){
-                return win;
+            if (winByRow){
+                return winByRow;
             }
         }
-        return false;
-    }
 
-    public static boolean winByColumn(char currentPlayer, char[][] board){
-        for(int column = 0; column < board[0].length; column++){
-            boolean win = true;
-            for(int row = 0; row < board.length; row++){
+        // check column
+        for (int column = 0; column < board[0].length; column++){
+            winByColumn = true;
+            for (int row = 0; row < board.length; row++){
                 if (board[row][column] != currentPlayer){
-                    win = false;
+                    winByColumn = false;
                 }
             }
-            if (win){
-                return win;
+            if (winByColumn){
+                return winByColumn;
             }
         }
-        return false;
-    }
 
-    public static boolean winByDiagonal(char currentPlayer, char[][] board){
-        for(int i = 0; i < board.length; i++){
+        // check diagonal
+        for (int i = 0; i < board.length; i++){
+            winByDiagonal = true;
             if (board[i][i] != currentPlayer){
-                return false;
+                winByDiagonal = false;
+            }
+            if (winByDiagonal){
+                return winByDiagonal;
             }
         }
-        return true;
-    }
 
-    public static boolean winByAntiDiagonal(char currentPlayer, char[][] board){
-        for(int i = 0; i < board.length; i++){
-            if (board[i][board.length - 1 -i] != currentPlayer){
-                return false;
+        // check anti-diagonal
+        for (int i = 0; i < board.length; i++){
+            winByAntiDiagonal = true;
+            if (board[i][board[0].length - 1 - i] != currentPlayer){
+                winByAntiDiagonal = false;
             }
-        }
-        return true;
-    }
-
-    public static boolean isWinning(char currentPlayer, char[][] board){
-        if (winByRow(currentPlayer, board) ||
-            winByColumn(currentPlayer, board) ||
-            winByDiagonal(currentPlayer, board) ||
-            winByAntiDiagonal(currentPlayer, board)){
-            return true;
+            if (winByAntiDiagonal){
+                return winByAntiDiagonal;
+            }
         }
         return false;
     }
 
     // check for tie
-    public static boolean haveDash(char[][] board) {
+    public static boolean isTie(char currentPlayer, char[][] board){
+        // check for unmodified element
         for (int row = 0; row < board.length; row++){
             for (int column = 0; column < board[0].length; column++){
                 if (board[row][column] == '-'){
-                    return true;
+                    return false;
                 }
             }
         }
-        return false;
-    }
-
-    public static boolean isTie(char currentPlayer, char[][] board){
-        if (haveDash(board) ||
-            isWinning(currentPlayer, board)){
+        // check for other conditions
+        if (isWinning(currentPlayer, board)){
             return false;
         }
         return true;
