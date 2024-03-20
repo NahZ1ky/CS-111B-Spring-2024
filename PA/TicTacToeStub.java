@@ -57,7 +57,6 @@ public class TicTacToeStub{
                 }
             }
             if (winByRow){
-                System.out.println("Win by row");
                 return winByRow;
             }
         }
@@ -71,35 +70,31 @@ public class TicTacToeStub{
                 }
             }
             if (winByColumn){
-                System.out.println("Win by column");
                 return winByColumn;
             }
         }
 
         // check diagonal
-        counter = 1;
+        counter = 0;
         for (int i = 0; i < board.length; i++){
             winByDiagonal = true;
             counter++;
+            System.out.println("Counter: " + counter);
             if (board[i][i] != currentPlayer){
                 winByDiagonal = false;
-            }
-            else if ((winByDiagonal) && (counter == 3)){
-                System.out.println("Win by diagonal");
+            } else if ((counter == board.length)){
                 return winByDiagonal;
             }
         }
 
         // check anti-diagonal
-        counter = 1;
+        counter = 0;
         for (int i = 0; i < board.length; i++){
             winByAntiDiagonal = true;
             counter++;
             if (board[i][board[0].length - 1 - i] != currentPlayer){
                 winByAntiDiagonal = false;
-            }
-            else if ((winByAntiDiagonal) && (counter == 3)){
-                System.out.println("Win by anti-diagonal");
+            } else if ((winByAntiDiagonal) && (counter == board.length)){
                 return winByAntiDiagonal;
             }
         }
