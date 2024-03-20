@@ -57,7 +57,6 @@ public class TicTacToeStub{
                 }
             }
             if (winByRow){
-                System.out.println("Win by row");
                 return winByRow;
             }
         }
@@ -71,7 +70,6 @@ public class TicTacToeStub{
                 }
             }
             if (winByColumn){
-                System.out.println("Win by column");
                 return winByColumn;
             }
         }
@@ -107,14 +105,12 @@ public class TicTacToeStub{
         for (int row = 0; row < board.length; row++){
             for (int column = 0; column < board[0].length; column++){
                 if (board[row][column] == '-'){
-                    System.out.println("Tie - dash found");
                     return false;
                 }
             }
         }
         // check for other conditions
         if (isWinning(currentPlayer, board)){
-            System.out.println("Tie - win found");
             return false;
         }
         return true;
