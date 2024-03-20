@@ -46,6 +46,7 @@ public class TicTacToeStub{
     // check for win
     public static boolean isWinning (char currentPlayer, char[][] board) {
         boolean winByRow, winByColumn, winByDiagonal, winByAntiDiagonal;
+        int counter;
 
         // check row
         for (int row = 0; row < board.length; row++){
@@ -56,6 +57,7 @@ public class TicTacToeStub{
                 }
             }
             if (winByRow){
+                System.out.println("Win by row");
                 return winByRow;
             }
         }
@@ -69,28 +71,35 @@ public class TicTacToeStub{
                 }
             }
             if (winByColumn){
+                System.out.println("Win by column");
                 return winByColumn;
             }
         }
 
         // check diagonal
+        counter = 1;
         for (int i = 0; i < board.length; i++){
             winByDiagonal = true;
+            counter++;
             if (board[i][i] != currentPlayer){
                 winByDiagonal = false;
             }
-            if (winByDiagonal){
+            else if ((winByDiagonal) && (counter == 3)){
+                System.out.println("Win by diagonal");
                 return winByDiagonal;
             }
         }
 
         // check anti-diagonal
+        counter = 1;
         for (int i = 0; i < board.length; i++){
             winByAntiDiagonal = true;
+            counter++;
             if (board[i][board[0].length - 1 - i] != currentPlayer){
                 winByAntiDiagonal = false;
             }
-            if (winByAntiDiagonal){
+            else if ((winByAntiDiagonal) && (counter == 3)){
+                System.out.println("Win by anti-diagonal");
                 return winByAntiDiagonal;
             }
         }
@@ -103,12 +112,14 @@ public class TicTacToeStub{
         for (int row = 0; row < board.length; row++){
             for (int column = 0; column < board[0].length; column++){
                 if (board[row][column] == '-'){
+                    System.out.println("Tie - dash found");
                     return false;
                 }
             }
         }
         // check for other conditions
         if (isWinning(currentPlayer, board)){
+            System.out.println("Tie - win found");
             return false;
         }
         return true;
