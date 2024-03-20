@@ -79,7 +79,7 @@ public class TicTacToeStub{
         for (int i = 0; i < board.length; i++){
             winByDiagonal = true;
             counter++;
-            System.out.println("Counter: " + counter);
+
             if (board[i][i] != currentPlayer){
                 winByDiagonal = false;
             } else if ((counter == board.length)){
@@ -88,7 +88,7 @@ public class TicTacToeStub{
         }
 
         // check anti-diagonal
-        counter = 0;
+        counter = 1;
         for (int i = 0; i < board.length; i++){
             winByAntiDiagonal = true;
             counter++;
