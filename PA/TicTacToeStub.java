@@ -46,7 +46,6 @@ public class TicTacToeStub{
     // check for win
     public static boolean isWinning (char currentPlayer, char[][] board) {
         boolean winByRow, winByColumn, winByDiagonal, winByAntiDiagonal;
-        int counter;
 
         // check row
         for (int row = 0; row < board.length; row++){
