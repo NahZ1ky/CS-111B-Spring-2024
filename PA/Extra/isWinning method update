@@ -1,0 +1,49 @@
+public static boolean isWinning(char currentPlayer, char[][] board) {
+    boolean winByRow, winByColumn, winByDiagonal, winByAntiDiagonal;
+    
+    // check rows
+    for (int row = 0; row < board.length; row++) {
+        winByRow = true;
+        for (int column = 0; column < board[0].length; column++) {
+            if (board[row][column] != currentPlayer) {
+                winByRow = false;
+            }
+        }
+        if (winByRow) {
+            return true;
+        }
+    }
+    
+    // check columns
+    for (int column = 0; column < board[0].length; column++) {
+        winByColumn = true;
+        for (int row = 0; row < board.length; row++) {
+            if (board[row][column] != currentPlayer) {
+                winByColumn = false;
+            }
+        }
+        if (winByColumn) {
+            return true;
+        }
+    }
+    
+    // check diagonal
+    winByDiagonal = true;
+    for (int i = 0; i < board.length; i++) {
+        if (board[i][i] != currentPlayer) {
+            winByDiagonal = false;
+        }
+    }
+    if (winByDiagonal) {
+        return true;
+    }
+    
+    // check anti-diagonal
+    winByAntiDiagonal = true;
+    for (int i = 0; i < board.length; i++) {
+        if (board[i][board.length - 1 - i] != currentPlayer) {
+            winByAntiDiagonal = false;
+        }
+    }
+    return winByAntiDiagonal;
+}
