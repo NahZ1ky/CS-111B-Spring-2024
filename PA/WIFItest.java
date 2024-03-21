@@ -23,8 +23,6 @@
 import java.util.Scanner;
 
 public class WIFItest {
-    static void Ask(){
-    }
     public static void main(String[] args) {
         String statusInput;
         boolean passed;
@@ -86,5 +84,6 @@ public class WIFItest {
         else if ((!passed) && (!failed)){
             System.out.println("Invalid Input, Please Re-run the Program.");
         }
+        input.close();
     }
 }

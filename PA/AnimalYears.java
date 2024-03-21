@@ -46,5 +46,6 @@ public class AnimalYears
             + "That is " + dogAge + " in dog years and " + rabAge + " in rabbit years!!!\n"
             + "Neither " +  dogName + " nor " + rabName + " can count that high :)"
         );
+        scnr.close();
     }
 }

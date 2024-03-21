@@ -73,7 +73,7 @@ import java.util.*;
 
 public class DataStats {
     public static void main(String args[]) {
-      Scanner scnr = new Scanner(System.in);
+        Scanner scnr = new Scanner(System.in);
         int minimum;
         int maximum;
         int total;
@@ -88,6 +88,7 @@ public class DataStats {
         int arrLen;
         arrLen = scnr.nextInt();
         int[] arrCon = new int[arrLen];
+        scnr.close();
         System.out.print("Enter " + arrLen + " numbers: ");
         for (i = 0; i < arrLen; i++){
             arrCon[i] = scnr.nextInt();

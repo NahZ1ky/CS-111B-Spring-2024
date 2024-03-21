@@ -7,8 +7,8 @@
 import java.util.*;
 
 public class FragmentZver {
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
         // initialize fragmentList
         System.out.println("How many fragments do you want in this program?");

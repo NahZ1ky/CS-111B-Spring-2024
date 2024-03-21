@@ -42,8 +42,8 @@
 import java.util.Scanner;
 
 public class DNAfragments {
+    static Scanner scnr = new Scanner(System.in);
     public static void main(String args[]) {
-        Scanner scnr = new Scanner(System.in);
 
         int i;
 

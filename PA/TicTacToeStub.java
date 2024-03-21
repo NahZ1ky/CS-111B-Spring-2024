@@ -173,6 +173,7 @@ public class TicTacToeStub{
             System.out.println("It's a Tie!");
             isGameOver = true;
         }
+        scan.close();
         return isGameOver;
     }
 

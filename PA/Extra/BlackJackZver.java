@@ -3,8 +3,8 @@
 import java.util.*;
 
 public class BlackJackZver {
+    static Scanner scnr = new Scanner(System.in);
     public static void main (String[] args) {
-        Scanner scnr = new Scanner(System.in);
         Random rdm = new Random();
 
         int dealerPoints = 0;

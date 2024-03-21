@@ -127,5 +127,6 @@ public class BlackJack {
                 System.out.println("You've got the same points, push.");
             }
         }
+        scnr.close();
     }
 }

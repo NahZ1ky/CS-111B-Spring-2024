@@ -181,7 +181,7 @@ public class TicTacToeShawnVer
             System.out.println("It's a tie!!");
             isGameOver = true;
         }
-
+        scan.close();
         return isGameOver;
 }
 
