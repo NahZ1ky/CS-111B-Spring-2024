@@ -17,5 +17,6 @@ public class zybook_418 {
             System.out.println("");
             userInput = scnr.nextLine();
         }
+        scnr.close();
     }
 }

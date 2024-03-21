@@ -24,7 +24,7 @@ public class zybook_417 {
             }
             System.out.println();
         }
-
+        scnr.close();
 
     }
 }

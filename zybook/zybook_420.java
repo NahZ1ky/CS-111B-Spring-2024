@@ -15,5 +15,6 @@ public class zybook_420 {
             countdown --;
             System.out.println();
         }
+        scnr.close();
     }
 }

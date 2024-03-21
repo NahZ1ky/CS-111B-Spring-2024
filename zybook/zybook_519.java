@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class zybook_519 {
+    static Scanner scnr = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner scnr = new Scanner(System.in);
         int[] userValues = new int[20];   // List of integers from input
         int count;
         int maxVal;

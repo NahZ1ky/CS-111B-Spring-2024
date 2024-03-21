@@ -20,5 +20,6 @@ public class zybook_419 {
             countUp = countUp + 1;
             System.out.println();
         }
+        scnr.close();
     }
 }

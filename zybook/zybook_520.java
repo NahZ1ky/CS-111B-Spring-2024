@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class zybook_520 {
+    static Scanner scnr = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner scnr = new Scanner(System.in);
         int numWords;
         String currWord;
         int i;

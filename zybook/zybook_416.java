@@ -25,5 +25,6 @@ public class zybook_416 {
         else {
             System.out.println(numChars + " " + inputChar + "'s");
         }
-     }
+        scnr.close();
+    }
 }

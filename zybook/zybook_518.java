@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class zybook_518 {
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         int[] numList = new int[10];
         int length = 0;
 

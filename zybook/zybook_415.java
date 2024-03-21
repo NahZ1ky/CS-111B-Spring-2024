@@ -29,6 +29,7 @@ public class zybook_415 {
         //Printing
         System.out.print(maxInt + " ");
         System.out.printf("%.2f\n", average);
+        scnr.close();
    }
 }
 
