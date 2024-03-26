@@ -29,7 +29,7 @@ public class TemperatureTest
 	System.out.println("Hit 'y' to continue.");
 	junk = scan.nextLine();
 	System.out.println();
-/*
+
 	System.out.println("Test case 2: NOT IMPLEMENTED.");
 
 	System.out.println("Test case 3: constructor with just"
@@ -55,7 +55,7 @@ public class TemperatureTest
      	System.out.println("Hit 'y' to continue.");
      	junk = scan.nextLine();
      	System.out.println();
-
+/*
 	System.out.println("Test case 5: constructor with just units,"
 				+ " C.");
       	System.out.println();
