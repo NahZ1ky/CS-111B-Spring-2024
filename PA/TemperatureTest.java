@@ -13,6 +13,7 @@ public class TemperatureTest
    {
 
         //dummy variable to stop scrolling so user can see test results
+	@SuppressWarnings("unused")
 	String junk;
 	Scanner scan = new Scanner(System.in);
 
@@ -210,5 +211,6 @@ public class TemperatureTest
 	System.out.println(t5);
 	System.out.println();
 	*/
+	scan.close();
    }
 }
