@@ -35,51 +35,51 @@ public class TemperatureTest
 	System.out.println("Test case 3: constructor with just"
 		+ " temperature.");
 	Temperature t2 = new Temperature(20.5);
-     	System.out.println();
-     	System.out.println("Verify 20.5 degrees C.");
-     	System.out.println();
-     	t2.writeOutput();
-     	System.out.println();
-     	System.out.println("Hit 'y' to continue.");
-     	junk = scan.nextLine();
-     	System.out.println();
+ 	System.out.println();
+ 	System.out.println("Verify 20.5 degrees C.");
+ 	System.out.println();
+ 	t2.writeOutput();
+ 	System.out.println();
+ 	System.out.println("Hit 'y' to continue.");
+ 	junk = scan.nextLine();
+ 	System.out.println();
 
    	System.out.println("Test case 4: constructor with just units,"
 		+ " F.");
-     	System.out.println();
-     	System.out.println("Verify 0 degrees F.");
-     	System.out.println();
-     	Temperature t3 = new Temperature('F');
-     	t3.writeOutput();
-     	System.out.println();
-     	System.out.println("Hit 'y' to continue.");
-     	junk = scan.nextLine();
-     	System.out.println();
-/*
+ 	System.out.println();
+ 	System.out.println("Verify 0 degrees F.");
+ 	System.out.println();
+ 	Temperature t3 = new Temperature('F');
+ 	t3.writeOutput();
+ 	System.out.println();
+ 	System.out.println("Hit 'y' to continue.");
+ 	junk = scan.nextLine();
+ 	System.out.println();
+
 	System.out.println("Test case 5: constructor with just units,"
 				+ " C.");
-      	System.out.println();
-     	System.out.println("Verify 0 degrees C.");
-     	System.out.println();
-     	Temperature t4 = new Temperature('C');
-     	t4.writeOutput();
-     	System.out.println();
-     	System.out.println("Hit 'y' to continue.");
-     	junk = scan.nextLine();
-     	System.out.println();
+    System.out.println();
+ 	System.out.println("Verify 0 degrees C.");
+ 	System.out.println();
+ 	Temperature t4 = new Temperature('C');
+ 	t4.writeOutput();
+ 	System.out.println();
+ 	System.out.println("Hit 'y' to continue.");
+ 	junk = scan.nextLine();
+ 	System.out.println();
 
 	System.out.println("Test case 6: constructor with"
 			+ " temperature and units.");
-     	System.out.println();
-     	System.out.println("Verify -51.2 degrees F.");
-     	System.out.println();
-     	Temperature t5 = new Temperature(-51.2, 'F');
-     	t5.writeOutput();
-     	System.out.println();
-     	System.out.println("Hit 'y' to continue.");
-     	junk = scan.nextLine();
-     	System.out.println();
-
+ 	System.out.println();
+ 	System.out.println("Verify -51.2 degrees F.");
+ 	System.out.println();
+ 	Temperature t5 = new Temperature(-51.2, 'F');
+ 	t5.writeOutput();
+ 	System.out.println();
+ 	System.out.println("Hit 'y' to continue.");
+ 	junk = scan.nextLine();
+ 	System.out.println();
+/*
 	System.out.println("Test case 7: write degrees C, "
 			+ "original in F.");
 	System.out.println();
@@ -89,7 +89,7 @@ public class TemperatureTest
 	System.out.println();
 	System.out.println("Hit 'y' to continue.");
 	junk = scan.nextLine();
-     	System.out.println();
+ 	System.out.println();
 
 	System.out.println("Test case 8: write degrees C, "
 			+ "original in C.");
@@ -100,7 +100,7 @@ public class TemperatureTest
 	System.out.println();
 	System.out.println("Hit 'y' to continue.");
 	junk = scan.nextLine();
-     	System.out.println();
+ 	System.out.println();
 
 	System.out.println("Test case 9: write degrees F, "
 			+ "original in C.");
@@ -111,7 +111,7 @@ public class TemperatureTest
 	System.out.println();
 	System.out.println("Hit 'y' to continue.");
 	junk = scan.nextLine();
-     	System.out.println();
+ 	System.out.println();
 
   	System.out.println("Test case 10: write degrees F, "
 			+ " original in F.");
@@ -122,7 +122,7 @@ public class TemperatureTest
 	System.out.println();
 	System.out.println("Hit 'y' to continue.");
 	junk = scan.nextLine();
-     	System.out.println();
+ 	System.out.println();
 
 	System.out.println("Test case 11: getF method with "
 			+ "original temperature in F.");
@@ -133,7 +133,7 @@ public class TemperatureTest
 	System.out.println();
 	System.out.println("Hit 'y' to continue.");
 	junk = scan.nextLine();
-     	System.out.println();
+ 	System.out.println();
 
 	System.out.println("Test case 12: getF method with original"
 			+ " temperature in C.");
@@ -143,7 +143,7 @@ public class TemperatureTest
 	System.out.println();
 	System.out.println("Hit 'y' to continue.");
 	junk = scan.nextLine();
-     	System.out.println();
+ 	System.out.println();
 
 	System.out.println("Test case 13: getC method with "
 			+ "original temperature in F.");
@@ -153,9 +153,9 @@ public class TemperatureTest
 	System.out.println();
 	System.out.println("Hit 'y' to continue.");
 	junk = scan.nextLine();
-    	System.out.println();
+	System.out.println();
 
-     	System.out.println();
+ 	System.out.println();
 	System.out.println("Test case 14: getC method with "
 			+ "original temperature in C.");
 	System.out.println("Verify 0");
@@ -178,7 +178,7 @@ public class TemperatureTest
 	System.out.println();
 	System.out.println("Hit 'y' to continue.");
 	junk = scan.nextLine();
-     	System.out.println();
+ 	System.out.println();
 
 	System.out.println("Test case 16: set method for just "
 			+ "degrees.");
