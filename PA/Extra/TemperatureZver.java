@@ -27,24 +27,24 @@ public class TemperatureZver {
 // Write methods
     // output both values
     public void writeOutput() { // debugger
-        System.out.printf("It is %.1f in %c", degrees, unit);
+        System.out.printf("Temperature = %.1f degree %c", degrees, unit);
     }
 
     // output C value
     public void writeC() { // something is wrong HERE
         if (unit == 'C' || unit == 'c') {
-            System.out.printf("It is %.1f in C", degrees);
+            System.out.printf("Temperature = %.1f degree C", degrees);
         } else if (unit != 'C' && unit != 'c') {
-            System.out.printf("It is %.1f in C", ((degrees - 32) * (5.0 / 9.0)));
+            System.out.printf("Temperature = %.1f degree C", ((degrees - 32) * (5.0 / 9.0)));
         }
     }
 
     // output F value
     public void writeF() {
         if (this.unit == 'F' || this.unit == 'f') {
-            System.out.printf("It is %.1f in F", degrees);
+            System.out.printf("Temperature = %.1f degree F", degrees);
         } else if (this.unit != 'F' && this.unit != 'f') {
-            System.out.printf("It is %.1f in F", ((degrees * (9.0 / 5.0)) + 32));
+            System.out.printf("Temperature = %.1f degree F", ((degrees * (9.0 / 5.0)) + 32));
         }
     }
 
@@ -99,6 +99,9 @@ public class TemperatureZver {
 
 
 
-
-
+    // toString method
+    public String toString(){
+        String result = "temperature " + this.degrees + this.unit;
+        return result;
+    }
 }

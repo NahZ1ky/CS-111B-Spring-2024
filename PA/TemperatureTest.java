@@ -80,7 +80,7 @@ public class TemperatureTest
  	System.out.println("Hit 'y' to continue.");
  	junk = scan.nextLine();
  	System.out.println();
-/*
+
 	System.out.println("Test case 7: write degrees C, "
 			+ "original in F.");
 	System.out.println();
@@ -210,7 +210,7 @@ public class TemperatureTest
 	System.out.println("T5 is 100  degrees F.");
 	System.out.println(t5);
 	System.out.println();
-	*/
+
 	scan.close();
    }
 }
