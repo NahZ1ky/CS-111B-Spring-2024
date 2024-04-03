@@ -1,3 +1,9 @@
+// Author(s): Ziky Zhang, Shawn Luna & Azeal Riday
+// Date of Last Modification: 04/02/2024
+// Course: CS111B
+// Instructor: C. Conner
+// File Name: Temperature.java
+
 public class Temperature {
     private double degrees;
     private char unit;
