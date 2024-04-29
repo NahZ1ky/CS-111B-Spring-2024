@@ -42,7 +42,7 @@ abstract public class StaffMember implements Payable, VacationTime, Comparable<S
 
     @Override
     public int compareTo(StaffMember o) {
-        return 0;
+        return this.name.compareTo(o.name);
     }
 
     //-----------------------------------------------------------------
