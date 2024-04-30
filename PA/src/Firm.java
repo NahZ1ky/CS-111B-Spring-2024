@@ -4,6 +4,12 @@
 //  Demonstrates polymorphism via inheritance.
 //********************************************************************
 
+// Author: Xirong (Ziky) Zhang, Shawn Luna, Azeal Riday
+// Date of Last Modification: 04/30/2024
+// Course: CS-111B
+// Instructor: C. Conner
+// Assignment #7
+
 public class Firm
 {
     //-----------------------------------------------------------------
