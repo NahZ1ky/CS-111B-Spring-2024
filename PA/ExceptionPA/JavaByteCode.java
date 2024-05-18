@@ -15,12 +15,11 @@ public class JavaByteCode
         File[] listOfFiles = folder.listFiles(); // we now have array of File objects
         String name;
         NotByteCodeException notByteCodeException = new NotByteCodeException("File is not a .class file"); // insert notByteCodeException and initialize error message
-        PrintWriter printWriter = null;
         String last6chars;
 
 
-        try (FileOutputStream outFile = new FileOutputStream("nonByteCode.txt")) {
-            printWriter = new PrintWriter(outFile); // set output file
+        try (FileOutputStream outFile = new FileOutputStream("nonByteCode.txt");
+            PrintWriter printWriter = new PrintWriter(outFile)) {
             for (File file : listOfFiles) {
                 if (file.isFile()) { // check bit's a file not subdirectory
                     name = file.getName(); // each file name is a String
@@ -39,12 +38,9 @@ public class JavaByteCode
                     } // if (file.length() > 6)
                 } // if (file.isFile()
             } // for (File file : listOfFiles)
-        } // try (FileOutputStream outFile = new FileOutputStream("nonByteCode.txt"))
+        }
         catch (IOException ex) {
             System.out.println("Error opening file");
         } // catch (IOException ex)
-        finally {
-                printWriter.close();
-        } // finally
     } // public static void main(String [] args)
 }
