@@ -10,19 +10,41 @@ import java.io.*;
 
 public class JavaByteCode
 {
-   public static void main(String [] args)
-   {
-        File folder = new File(".");  //dot is current directory
-        File[] listOfFiles = folder.listFiles(); //we now have array of File objects
-        String name = "";
+    public static void main(String [] args) {
+        File folder = new File(".");  // dot is current directory
+        File[] listOfFiles = folder.listFiles(); // we now have array of File objects
+        String name;
+        NotByteCodeException notByteCodeException = new NotByteCodeException("File is not a .class file"); // insert notByteCodeException and initialize error message
+        PrintWriter printWriter = null;
+        String last6chars;
 
-        for (File file : listOfFiles) {
-            //check it's a file not subdirectory
-            if (file.isFile()) {
-                    name = file.getName(); //each file name is a String
-                    System.out.println(name);
 
-            }
-        }
-    }
+        try (FileOutputStream outFile = new FileOutputStream("nonByteCode.txt")) {
+            printWriter = new PrintWriter(outFile); // set output file
+            for (File file : listOfFiles) {
+                if (file.isFile()) { // check bit's a file not subdirectory
+                    name = file.getName(); // each file name is a String
+                    if (file.length() > 6) { // check filename length
+                        last6chars = name.substring(name.length() - 6);
+                        try {
+                            if (!last6chars.equals(".class")) {
+                                throw notByteCodeException; // throw exception
+                            } // if (!last6chars.equals(".class"))
+                        } // try
+                        catch (NotByteCodeException ex) {
+                            printWriter.write(name);
+                            printWriter.println();
+                            System.out.println(name + " is not a .class file");
+                        } // catch (NotByteCodeException e)
+                    } // if (file.length() > 6)
+                } // if (file.isFile()
+            } // for (File file : listOfFiles)
+        } // try (FileOutputStream outFile = new FileOutputStream("nonByteCode.txt"))
+        catch (IOException ex) {
+            System.out.println("Error opening file");
+        } // catch (IOException ex)
+        finally {
+                printWriter.close();
+        } // finally
+    } // public static void main(String [] args)
 }
